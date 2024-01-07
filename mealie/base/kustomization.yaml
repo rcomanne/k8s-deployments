@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: mealie
+
+configMapGenerator:
+  - name: mealie
+    envs:
+      - mealie.env
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: mealie
+    includeSelectors: true
+  - pairs:
+      app.kubernetes.io/version: 1.0.0-RC2
+    includeSelectors: false
