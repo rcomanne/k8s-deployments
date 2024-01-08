@@ -9,3 +9,6 @@ patches:
       - op: add
         path: /spec/rules/0/host
         value: home-assistant.rcomanne.nl
+    target:
+      kind: Ingress
+      name: home-assistant
