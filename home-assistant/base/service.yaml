@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: home-assistant
 spec:
-  selector:
-    app: home-assistant
   ports:
     - name: web
       targetPort: web
