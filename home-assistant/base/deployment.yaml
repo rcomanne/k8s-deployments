@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: home-assistant
+    spec:
+      containers:
+        - name: home-assistant
+          image: homeassistant/home-assistant:2024.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TZ
+              value: "Europe/Amsterdam"
+          ports:
+            - containerPort: 8123
+              name: web
+          volumeMounts:
+            - mountPath: /config
+              name: home-assistant-data
+      restartPolicy: Always
+      volumes:
+        - name: home-assistant-data
+          emptyDir: {}
+
