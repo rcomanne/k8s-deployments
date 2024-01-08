@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+spec:
+  template:
+    spec:
+      containers:
+        - name: home-assistant
+          volumeMounts:
+            - mountPath: /mnt/config
+              name: home-assistant-config
+      volumes:
+        - name: home-assistant-config
+          persistentVolumeClaim:
+            claimName: pvc-home-assistant-config

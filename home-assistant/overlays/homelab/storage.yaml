@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-home-assistant-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: nfs-csi
+
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: home-assistant
+#  annotations:
+#    pv.kubernetes.io/provisioned-by: nfs.csi.k8s.io
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  capacity:
+#    storage: 8Gi
+#  volumeMode: Filesystem
+#  storageClassName: nfs-csi
+#  persistentVolumeReclaimPolicy: Retain
+#  csi:
+#    driver: nfs.csi.k8s.io
+#    volumeAttributes:
+#      server: truenas.home
+#      share: /mnt/habbo/nfs/rcomanne
+#  mountOptions:
+#    - nfsvers=4.1
+#    - hard
+
