@@ -10,4 +10,4 @@ spec:
       targetPort: web
       port: 8123
       protocol: TCP
-  type: NodePort
+  type: ClusterIP

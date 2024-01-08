@@ -8,6 +8,10 @@ spec:
     metadata:
       name: home-assistant
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
       containers:
         - name: home-assistant
           image: homeassistant/home-assistant:2024.1
@@ -21,6 +25,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: home-assistant-data
+          securityContext:
+            privileged: false
       restartPolicy: Always
       volumes:
         - name: home-assistant-data
