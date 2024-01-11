@@ -31,10 +31,6 @@ spec:
               name: home-assistant-config
           securityContext:
             privileged: false
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
       restartPolicy: Always
       volumes:
         - name: home-assistant-data
