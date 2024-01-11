@@ -11,7 +11,7 @@ resources:
 configMapGenerator:
   - name: home-assistant-config
     files:
-      - configuration.yaml
+      - default_configuration.yaml
     options:
       disableNameSuffixHash: true
 

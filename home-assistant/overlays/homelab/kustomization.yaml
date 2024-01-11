@@ -9,7 +9,7 @@ configMapGenerator:
   - name: home-assistant-config
     files:
       - configuration.yaml
-    behavior: merge
+    behavior: replace
 
 patches:
   - patch: |-
