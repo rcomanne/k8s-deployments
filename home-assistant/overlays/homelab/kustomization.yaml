@@ -2,17 +2,23 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- ../../base
-- storage.yaml
+  - ../../base
+  - storage.yaml
+
+configMapGenerator:
+  - name: home-assistant-config
+    files:
+      - configuration.yaml
+    behavior: merge
 
 patches:
-- patch: |-
-    - op: add
-      path: /spec/rules/0/host
-      value: home-assistant.rcomanne.nl
-  target:
-    kind: Ingress
-    name: home-assistant
-- path: deployment.yaml
+  - patch: |-
+      - op: add
+        path: /spec/rules/0/host
+        value: home-assistant.rcomanne.nl
+    target:
+      kind: Ingress
+      name: home-assistant
+  - path: deployment.yaml
 
 

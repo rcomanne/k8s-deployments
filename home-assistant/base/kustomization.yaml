@@ -8,6 +8,13 @@ resources:
   - service.yaml
   - ingress.yaml
 
+configMapGenerator:
+  - name: home-assistant-config
+    files:
+      - configuration.yaml
+    options:
+      disableNameSuffixHash: true
+
 labels:
   - pairs:
       app.kubernetes.io/name: home-assistant

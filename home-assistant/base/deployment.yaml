@@ -26,10 +26,19 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: home-assistant-data
+            - mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
+              name: home-assistant-config
           securityContext:
             privileged: false
       restartPolicy: Always
       volumes:
         - name: home-assistant-data
           emptyDir: {}
+        - name: home-assistant-config
+          configMap:
+            name: home-assistant-config
+            items:
+              - key: configuration.yaml
+                path: configuration.yaml
 

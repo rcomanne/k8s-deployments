@@ -8,9 +8,11 @@ spec:
       containers:
         - name: home-assistant
           volumeMounts:
-            - mountPath: /mnt/config
+            - mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
               name: home-assistant-config
       volumes:
-        - name: home-assistant-config
+        - name: home-assistant-data
           persistentVolumeClaim:
             claimName: pvc-home-assistant-config
+            
