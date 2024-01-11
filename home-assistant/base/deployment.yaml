@@ -34,7 +34,6 @@ spec:
       restartPolicy: Always
       volumes:
         - name: home-assistant-data
-          emptyDir: {}
         - name: home-assistant-config
           configMap:
             name: home-assistant-config
