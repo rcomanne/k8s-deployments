@@ -8,7 +8,7 @@ spec:
       containers:
         - name: home-assistant
           volumeMounts:
-            - mountPath: /config/default_configuration.yaml
+            - mountPath: /config/configuration.yaml
               subPath: configuration.yaml
               name: home-assistant-config
       volumes:
