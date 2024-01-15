@@ -36,7 +36,7 @@ nextcloud:
         $CONFIG = array(
           "check_data_directory_permissions"=> false, # fix data directory permissions error
           'overwriteprotocol' => 'https',
-          'overwritehost' => '${host}',
+          'overwritehost' => 'nextcloud.rcomanne.nl',
           "trusted_domains" => array (
             $_ENV["NEXTCLOUD_TRUSTED_DOMAINS"], # fix probes 400 error
           ),

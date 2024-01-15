@@ -1,9 +1,6 @@
 crds:
   enabled: true
 
-global:
-  pspEnabled: true
-
 grafana:
   defaultDashboardsTimezone: browser
 
