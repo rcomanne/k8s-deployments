@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: akaunting
+
+images:
+  - name: akaunting/akaunting
+    newTag: "3-fpm-alpine-nginx"
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+configMapGenerator:
+  - name: akaunting-config
+    envs:
+      - run.env
+    options:
+      disableNameSuffixHash: true
+  - name: akaunting-files
+    files:
+      - files/php.ini
+      - files/supervisord.conf
+      - files/nginx.conf
+    options:
+      disableNameSuffixHash: true
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: akaunting
+    includeSelectors: true
+  - pairs:
+      app.kubernetes.io/version: "3"
+    includeSelectors: false

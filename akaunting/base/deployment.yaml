@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akaunting
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: akaunting
+          image: akaunting/akaunting
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              name: web
+          envFrom:
+            - configMapRef:
+                name: akaunting-config
+                optional: false
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: akaunting-data
+            - mountPath: /usr/local/etc/php/php.ini
+              name: akaunting-php-ini
+            - mountPath: /etc/supervisor/conf.d/supervisord.conf
+              name: akaunting-supervisord-conf
+            - mountPath: /etc/nginx/nginx.conf
+              name: akaunting-nginx-conf
+      restartPolicy: Always
+      volumes:
+        - name: akaunting-data
+        - name: akaunting-php-ini
+          configMap:
+            name: akaunting-files
+            items:
+              - key: php.ini
+                path: php.ini
+        - name: akaunting-supervisord-conf
+          configMap:
+            name: akaunting-files
+            items:
+              - key: supervisord.conf
+                path: supervisord.conf
+        - name: akaunting-nginx-conf
+          configMap:
+            name: akaunting-files
+            items:
+              - key: nginx.conf
+                path: nginx.conf
