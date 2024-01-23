@@ -28,16 +28,16 @@ patches:
     target:
       kind: Ingress
       name: akaunting
-  - patch: |-
-      - op: replace
-        path: /spec/template/spec/volumes/0
-        value: 
-          name: akaunting-data
-          persistentVolumeClaim:
-            claimName: pvc-akaunting-data
-    target:
-      kind: Deployment
-      name: akaunting
+#  - patch: |-
+#      - op: replace
+#        path: /spec/template/spec/volumes/0
+#        value:
+#          name: akaunting-data
+#          persistentVolumeClaim:
+#            claimName: pvc-akaunting-data
+#    target:
+#      kind: Deployment
+#      name: akaunting
   - patch: |-
       - op: add
         path: /spec/template/spec/containers/0/envFrom/-

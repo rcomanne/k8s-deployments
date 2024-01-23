@@ -33,6 +33,7 @@ spec:
       restartPolicy: Always
       volumes:
         - name: akaunting-data
+          emptyDir: {}
         - name: akaunting-php-ini
           configMap:
             name: akaunting-files
