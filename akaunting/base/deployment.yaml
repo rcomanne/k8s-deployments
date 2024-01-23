@@ -22,10 +22,13 @@ spec:
             - mountPath: /var/www/html
               name: akaunting-data
             - mountPath: /usr/local/etc/php/php.ini
+              subPath: php.ini
               name: akaunting-php-ini
             - mountPath: /etc/supervisor/conf.d/supervisord.conf
+              subPath: supervisord.conf
               name: akaunting-supervisord-conf
             - mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
               name: akaunting-nginx-conf
       restartPolicy: Always
       volumes:
